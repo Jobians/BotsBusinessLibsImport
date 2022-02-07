@@ -10,8 +10,6 @@ function GACode() {
   var sheet;
   var headers = [];
 
-  var suncResult = { newCount: 0, updatedCount: 0 };
-
   var already_filled = {}
 
   function fillOnExistHeaders(headers, rowIndex) {
@@ -107,12 +105,6 @@ function GACode() {
       throw new Error("Can not open sheet with name: " + options.gaTableSyncLib.sheetName);
     }
   }
-
-  function syncData() {
-    if (updateExistData()) {
-      suncResult.updatedCount += 1
-      return
-    }
 
     var lastRowIndex = sheet.getLastRow()
     updateData(headers, lastRowIndex + 1)
